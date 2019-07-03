@@ -148,6 +148,45 @@ public class Control implements ActionListener {
 				break;								
 			}
 			
+			case "-": {
+				sop("Control->actionsPerformed->switch->case--");
+				if (model.legitNumber(txtDisplay.getText())) {
+					shuffle.push(txtDisplay.getText());
+					shuffle.push("-");
+					txtDisplay.setText("");
+				}
+				else {
+					txtDisplay.setText("NAN");
+				}
+				break;				
+			}
+			
+			case "x": {
+				sop("Control->actionsPerformed->switch->case-x");
+				if (model.legitNumber(txtDisplay.getText())) {
+					shuffle.push(txtDisplay.getText());
+					shuffle.push("x");
+					txtDisplay.setText("");
+				}
+				else {
+					txtDisplay.setText("NAN");
+				}
+				break;				
+			}
+			
+			case "/": {
+				sop("Control->actionsPerformed->switch->case-/");
+				if (model.legitNumber(txtDisplay.getText())) {
+					shuffle.push(txtDisplay.getText());
+					shuffle.push("/");
+					txtDisplay.setText("");
+				}
+				else {
+					txtDisplay.setText("NAN");
+				}
+				break;				
+			}
+			
 			default: { break; }
 			
 			};
