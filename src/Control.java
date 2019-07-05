@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Stack;
-import java.util.StringTokenizer;
 
 public class Control implements ActionListener {
 
@@ -39,71 +38,6 @@ public class Control implements ActionListener {
 		String buttonPushed = e.getActionCommand();
 		switch(buttonPushed) {
 		
-//			case "1": {
-//				sop("Control->actionsPerformed->switch->case-1");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//				}
-//			
-//			case "2": {
-//				sop("Control->actionsPerformed->switch->case-2");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "3": {
-//				sop("Control->actionsPerformed->switch->case-3");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "4": {
-//				sop("Control->actionsPerformed->switch->case-4");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "5": {
-//				sop("Control->actionsPerformed->switch->case-5");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "6": {
-//				sop("Control->actionsPerformed->switch->case-6");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "7": {
-//				sop("Control->actionsPerformed->switch->case-7");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "8": {
-//				sop("Control->actionsPerformed->switch->case-8");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "9": {
-//				sop("Control->actionsPerformed->switch->case-9");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case "0": {
-//				sop("Control->actionsPerformed->switch->case-0");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
-//			
-//			case ".": {
-//				sop("Control->actionsPerformed->switch->case-.");
-//				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
-//				break;
-//			}
 			case "C": {
 				sop("Control->actionsPerformed->switch->case-C");
 				txtDisplay.setText("");
@@ -111,16 +45,18 @@ public class Control implements ActionListener {
 				break;				
 			}
 			
-			case "%": {
-				sop("Control->actionsPerformed->switch->case-%");
+			case "%": 
+			
+			case "+":
+			
+			case "-":
+			
+			case "x": 
+			
+			case "/": {
+				sop("Control->actionsPerformed->switch->case-/");
 				functionButton(buttonPushed);
 				break;				
-			}
-			
-			case "+": {
-				sop("Control->actionsPerformed->switch->case-+");
-				functionButton(buttonPushed);
-				break;
 			}
 			
 			case "=": {
@@ -132,24 +68,6 @@ public class Control implements ActionListener {
 					txtDisplay.setText("NAN");
 				}
 				break;								
-			}
-			
-			case "-": {
-				sop("Control->actionsPerformed->switch->case--");
-				functionButton(buttonPushed);
-				break;				
-			}
-			
-			case "x": {
-				sop("Control->actionsPerformed->switch->case-x");
-				functionButton(buttonPushed);
-				break;				
-			}
-			
-			case "/": {
-				sop("Control->actionsPerformed->switch->case-/");
-				functionButton(buttonPushed);
-				break;				
 			}
 			
 			default: { 
