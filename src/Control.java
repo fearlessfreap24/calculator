@@ -1,9 +1,11 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Stack;
 
-public class Control implements ActionListener {
+public class Control implements ActionListener, KeyListener {
 	
 	// array of jbuttons to hold the buttons from Display to add listeners.
 	private JButton[] buttons;
@@ -32,6 +34,10 @@ public class Control implements ActionListener {
 		buttons = disp.getButtons();
 		// call for the text field from display
 		txtDisplay = disp.getTextField();
+		// add key listener to text field
+		txtDisplay.addKeyListener(this);
+		// set focus to text field
+		txtDisplay.setFocusable(true);
 		// add listeners to buttons
 		buttons = addListeners(buttons);
 	}
@@ -52,10 +58,58 @@ public class Control implements ActionListener {
 		// variable to hold the action performed to be passed to switch statement.
 		String buttonPushed = e.getActionCommand();
 		// switch for action performed
-		switch(buttonPushed) {
+		switcher(buttonPushed);
+		// reset focus to txtDisplay
+		txtDisplay.requestFocusInWindow();
+		
+	}
+	
+	// a shortcut method for System.out.println
+	private void sop(String a) {
+		System.out.println(a);
+	}
+	
+	// String concatenation
+	private String addToString(String a, String b) {
+		return a+b;
+	}
+	
+	// verifies the input from text field is a number then put it on the stack and then adds the function button
+	private void functionButton(String op) {
+//		sop(String.format("txtDisplay = %s, legitNumber = %b", txtDisplay.getText(), model.legitNumber(txtDisplay.getText())));
+		// if the input is a number, push it on the stack and then push the operator on the stack
+		if (model.legitNumber(txtDisplay.getText())){
+			shuffle.push(txtDisplay.getText());
+			shuffle.push(op);
+			txtDisplay.setText("");
+		}
+		// if input is not a number display Not A Number
+		else {
+			txtDisplay.setText("NAN");
+		}
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		String acceptable = "123456789%/*-+.=";
+		String in = Character.toString(e.getKeyChar());
+		if (acceptable.indexOf(in) < 0) {}
+		else switcher(in);
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {}
+
+	@Override
+	public void keyTyped(KeyEvent e) {}
+	
+	private void switcher(String a) {
+
+		switch(a) {
 			// clear button. clears text field and stack
 			case "C": {
-				sop("Control->actionsPerformed->switch->case-C");
+//				sop("Control->actionsPerformed->switch->case-C");
 				txtDisplay.setText("");
 				shuffle.empty();
 				break;				
@@ -71,7 +125,7 @@ public class Control implements ActionListener {
 			
 			case "/": {
 				sop("Control->actionsPerformed->switch->case-/");
-				functionButton(buttonPushed);
+				functionButton(a);
 				break;				
 			}
 			// sends to Model to verify the current text field input and sends to Model to perform to arithmetic 
@@ -89,37 +143,10 @@ public class Control implements ActionListener {
 			}
 			// catches everything else and puts on display
 			default: { 
-				txtDisplay.setText(addToString(txtDisplay.getText(), buttonPushed));
+				txtDisplay.setText(addToString(txtDisplay.getText(), a));
 				break; }
 			
 			};
-		
-	}
-	
-	// a shortcut method for System.out.println
-	private void sop(String a) {
-		System.out.println(a);
-	}
-	
-	// String concatenation
-	private String addToString(String a, String b) {
-		return a+b;
-	}
-	
-	// verifies the input from text field is a number then put it on the stack and then adds the function button
-	private void functionButton(String op) {
-		sop(String.format("txtDisplay = %s, legitNumber = %b", txtDisplay.getText(), model.legitNumber(txtDisplay.getText())));
-		// if the input is a number, push it on the stack and then push the operator on the stack
-		if (model.legitNumber(txtDisplay.getText())){
-			shuffle.push(txtDisplay.getText());
-			shuffle.push(op);
-			txtDisplay.setText("");
-		}
-		// if input is not a number display Not A Number
-		else {
-			txtDisplay.setText("NAN");
-		}
-		
 	}
 
 }

@@ -32,7 +32,8 @@ public class Display extends JFrame{
 		
 		txtDisplay = new JTextField();
 		panel_1.add(txtDisplay);
-		txtDisplay.setColumns(20);
+		txtDisplay.setColumns(15);
+		txtDisplay.setEditable(false);
 		// panel_6 holds arithmetic buttons
 		JPanel panel_6 = new JPanel();
 		panel.add(panel_6);
