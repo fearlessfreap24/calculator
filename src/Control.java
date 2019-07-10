@@ -92,10 +92,13 @@ public class Control implements ActionListener, KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
+		// string of characters to be used for comparison
 		String acceptable = "123456789%/*-+.=";
+		// 
 		String in = Character.toString(e.getKeyChar());
-		if (acceptable.indexOf(in) < 0) {}
-		else switcher(in);
+		// if the enter key is pressed, make "in" be the equal sign
+		if (e.getKeyCode() == KeyEvent.VK_ENTER) in = "=";
+		if (acceptable.indexOf(in) >= 0) switcher(in);
 	}
 
 	@Override

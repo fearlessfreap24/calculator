@@ -32,10 +32,10 @@ public class Display extends JFrame{
 		
 		txtDisplay = new JTextField();
 		panel_1.add(txtDisplay);
-		txtDisplay.setColumns(15);
+		txtDisplay.setColumns(18);
 		txtDisplay.setEditable(false);
 		// panel_6 holds arithmetic buttons
-		JPanel panel_6 = new JPanel();
+		JPanel panel_6 = new JPanel(new GridLayout(1,4));
 		panel.add(panel_6);
 		
 		JButton buttonPlus = new JButton("+");
@@ -58,9 +58,8 @@ public class Display extends JFrame{
 		// add button to array
 		buttons[13] = buttonDivide;
 		// panel_2 holds 1,2,3,and Clear
-		JPanel panel_2 = new JPanel();
+		JPanel panel_2 = new JPanel(new GridLayout(1,4));
 		panel.add(panel_2);
-		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton button1 = new JButton("1");
 		panel_2.add(button1);
@@ -82,7 +81,7 @@ public class Display extends JFrame{
 		// add button to array
 		buttons[14] = buttonClear;
 		//panel_3 holds 4,5,6,and =
-		JPanel panel_3 = new JPanel();
+		JPanel panel_3 = new JPanel(new GridLayout(1,4));
 		panel.add(panel_3);
 		
 		JButton button4 = new JButton("4");
@@ -105,7 +104,7 @@ public class Display extends JFrame{
 		// add button to array
 		buttons[16] = buttonEquals;
 		// panel_4 holds 7,8,and 9
-		JPanel panel_4 = new JPanel();
+		JPanel panel_4 = new JPanel(new GridLayout(1,4));
 		panel.add(panel_4);
 		
 		JButton button7 = new JButton("7");
@@ -122,8 +121,12 @@ public class Display extends JFrame{
 		panel_4.add(button9);
 		// add button to array
 		buttons[9] = button9;
+		// JLabel as spacer
+		JLabel space1 = new JLabel("");
+		// add spacer to panel
+		panel_4.add(space1);
 		// panel_5 holds %,0,and (.)
-		JPanel panel_5 = new JPanel();
+		JPanel panel_5 = new JPanel(new GridLayout(1,4));
 		panel.add(panel_5);
 		
 		JButton buttonPercent = new JButton("%");
@@ -140,6 +143,10 @@ public class Display extends JFrame{
 		panel_5.add(buttonDecimal);
 		// add button to array
 		buttons[17] = buttonDecimal;
+		// JLabel for spacer
+		JLabel space2 = new JLabel("");
+		// add spacer to panel
+		panel_5.add(space2);
 		// make the frame visible after everything is in place
 		frame.setVisible(true);
 	
