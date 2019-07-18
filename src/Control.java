@@ -122,6 +122,7 @@ public class Control implements ActionListener, KeyListener {
 				sop("Control->actionsPerformed->switch->case-C");
 				txtDisplay.setText("");
 				shuffle.empty();
+				lblTotaler.setText("");
 				sop(String.format("Stack Size = %d", shuffle.size()));
 				break;				
 			}
@@ -166,7 +167,9 @@ public class Control implements ActionListener, KeyListener {
 	private void calculate() {
 		
 		if (model.legitNumber(txtDisplay.getText())) {
-			txtDisplay.setText(model.equals(shuffle, txtDisplay.getText()));
+			String result = model.equals(shuffle, txtDisplay.getText());
+			txtDisplay.setText(result);
+			lblTotaler.setText(result);
 		}
 		// if not a number, display Not A Number
 		else {
