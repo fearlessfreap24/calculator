@@ -93,7 +93,7 @@ public class Control implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// string of characters to be used for comparison
-		String acceptable = "123456789%/*-+.=";
+		String acceptable = "0123456789%/*-+.=";
 		// 
 		String in = Character.toString(e.getKeyChar());
 		// if the enter key is pressed, make "in" be the equal sign

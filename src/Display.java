@@ -4,6 +4,7 @@
 import java.awt.*;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class Display extends JFrame{
 	// variable to hold text field
 	private JTextField txtDisplay;
