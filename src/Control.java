@@ -7,13 +7,15 @@ import java.util.Stack;
 
 public class Control implements ActionListener, KeyListener {
 	
-	// array of jbuttons to hold the buttons from Display to add listeners.
+	// array of JButtons to hold the buttons from Display to add listeners.
 	private JButton[] buttons;
-	// af JTextField to hold the Display text field to change the calculator display.
+	// a JTextField to hold the Display text field to change the calculator display.
 	private JTextField txtDisplay;
 	// A model to be able to call methods from Model
 	private Model model;
 	// using a stack to hold equation parts
+	// a JLabel to present information on Diplay
+	private JLabel lblTotaler;
 	private Stack<String> shuffle = new Stack<String>();
 	
 	public static void main(String[] args) {
@@ -32,6 +34,8 @@ public class Control implements ActionListener, KeyListener {
 		model = new Model();
 		// call for the buttons from the display
 		buttons = disp.getButtons();
+		// call for the Totaler
+		lblTotaler = disp.getTotaler();
 		// call for the text field from display
 		txtDisplay = disp.getTextField();
 		// add key listener to text field
@@ -109,12 +113,16 @@ public class Control implements ActionListener, KeyListener {
 	
 	private void switcher(String a) {
 
+		String operator = "/*-+%";
 		switch(a) {
 			// clear button. clears text field and stack
-			case "C": {
-//				sop("Control->actionsPerformed->switch->case-C");
+			case "C": 
+			
+			case "c": {
+				sop("Control->actionsPerformed->switch->case-C");
 				txtDisplay.setText("");
 				shuffle.empty();
+				sop(String.format("Stack Size = %d", shuffle.size()));
 				break;				
 			}
 			// cases for functions
@@ -126,22 +134,25 @@ public class Control implements ActionListener, KeyListener {
 			
 			case "x": 
 			
+			// if the stack is empty, add the number and operator to the stack. if it is not, perform calculations and add result and operator to the stack
 			case "/": {
-				sop("Control->actionsPerformed->switch->case-/");
-				functionButton(a);
+				sop(String.format("Control->actionsPerformed->switch->case-%s", a));
+				
+				if (shuffle.empty()) functionButton(a);
+				else {
+					calculate();
+					functionButton(a);
+				}
+				sop(String.format("Stack Size = %d", shuffle.size()));
 				break;				
 			}
 			// sends to Model to verify the current text field input and sends to Model to perform to arithmetic 
 			case "=": {
 				sop("Control->actionsPerformed->switch->case-=");
-				// if input is a number perform arithmetic and display the result
-				if (model.legitNumber(txtDisplay.getText())) {
-					txtDisplay.setText(model.equals(shuffle, txtDisplay.getText()));
-				}
-				// if not a number, display Not A Number
-				else {
-					txtDisplay.setText("NAN");
-				}
+				
+				calculate();
+				sop(String.format("Stack Size = %d", shuffle.size()));
+				
 				break;								
 			}
 			// catches everything else and puts on display
@@ -150,6 +161,17 @@ public class Control implements ActionListener, KeyListener {
 				break; }
 			
 			};
+	}
+	
+	private void calculate() {
+		
+		if (model.legitNumber(txtDisplay.getText())) {
+			txtDisplay.setText(model.equals(shuffle, txtDisplay.getText()));
+		}
+		// if not a number, display Not A Number
+		else {
+			txtDisplay.setText("NAN");
+		}
 	}
 
 }

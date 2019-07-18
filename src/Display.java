@@ -10,6 +10,8 @@ public class Display extends JFrame{
 	private JTextField txtDisplay;
 	// array of JButtons to hold calculator buttons
 	private JButton[] buttons = new JButton[18];
+	// a label to present information
+	private JLabel lblTotaler;
 	/**
 	 * Create the application.
 	 */
@@ -21,12 +23,18 @@ public class Display extends JFrame{
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize(JFrame frame) {
-		frame.setBounds(100, 100, 221, 249);
+		frame.setBounds(100, 100, 221, 284);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		// panel 1 main panel
 		JPanel panel = new JPanel();
 		frame.getContentPane().add(panel, BorderLayout.CENTER);
-		panel.setLayout(new GridLayout(6, 1, 0, 0));
+		panel.setLayout(new GridLayout(7, 1, 0, 0));
+		
+		JPanel panel_7 = new JPanel();
+		panel.add(panel_7);
+		
+		lblTotaler = new JLabel("");
+		panel_7.add(lblTotaler);
 		// panel_1 holds text field/display
 		JPanel panel_1 = new JPanel();
 		panel.add(panel_1);
@@ -159,6 +167,10 @@ public class Display extends JFrame{
 	// method to send JTextField to Control
 	public JTextField getTextField() {
 		return txtDisplay;
+	}
+	// method to send JLabel to Control
+	public JLabel getTotaler() {
+		return lblTotaler;
 	}
 
 }
