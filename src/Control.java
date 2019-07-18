@@ -97,7 +97,7 @@ public class Control implements ActionListener, KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// string of characters to be used for comparison
-		String acceptable = "0123456789%/*-+.=";
+		String acceptable = "0123456789%/*-+.=Cc";
 		// 
 		String in = Character.toString(e.getKeyChar());
 		// if the enter key is pressed, make "in" be the equal sign
@@ -121,7 +121,7 @@ public class Control implements ActionListener, KeyListener {
 			case "c": {
 				sop("Control->actionsPerformed->switch->case-C");
 				txtDisplay.setText("");
-				shuffle.empty();
+				shuffle = new Stack<>();
 				lblTotaler.setText("");
 				sop(String.format("Stack Size = %d", shuffle.size()));
 				break;				
